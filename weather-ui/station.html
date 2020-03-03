@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Weather OSGi</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-1.52.3.min.js"></script>
+    <script src="station.js"></script>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>OSGi Weather Station</h1>
+
+<h2>Temperature</h2>
+<div class="alert alert-danger" id="temperature-error-div">
+    Error: <span id="temperature-error-text"></span>
+</div>
+<div id='temperatureGraph'></div>
+
+<h2>Rainfall</h2>
+<div class="alert alert-danger" id="rainfall-error-div">
+    Error: <span id="rainfall-error-text"></span>
+</div>
+<div id='rainfallGraph'></div>
+
+</body>
+</html>

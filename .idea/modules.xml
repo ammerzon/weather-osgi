@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/rainfall-sensor/rainfall-sensor.iml" filepath="$PROJECT_DIR$/rainfall-sensor/rainfall-sensor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/temperature-sensor/temperature-sensor.iml" filepath="$PROJECT_DIR$/temperature-sensor/temperature-sensor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/temperature-sensor-advanced/temperature-sensor-advanced.iml" filepath="$PROJECT_DIR$/temperature-sensor-advanced/temperature-sensor-advanced.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather-api/weather-api.iml" filepath="$PROJECT_DIR$/weather-api/weather-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather-features/weather-features.iml" filepath="$PROJECT_DIR$/weather-features/weather-features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather-model/weather-model.iml" filepath="$PROJECT_DIR$/weather-model/weather-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather-osgi.iml" filepath="$PROJECT_DIR$/weather-osgi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather-station/weather-station.iml" filepath="$PROJECT_DIR$/weather-station/weather-station.iml" />
+    </modules>
+  </component>
+</project>

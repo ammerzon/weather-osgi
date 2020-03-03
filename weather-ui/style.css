@@ -1,0 +1,23 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+}
+
+h1, h2 {
+    margin-left: 30px;
+}
+
+.alert {
+    margin-left: 30px;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

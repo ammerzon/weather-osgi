@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="weather-api" />
+        <module name="temperature-sensor" />
+        <module name="weather-model" />
+        <module name="temperature-sensor-advanced" />
+        <module name="weather-station" />
+        <module name="rainfall-sensor" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rainfall-sensor" target="11" />
+      <module name="temperature-sensor" target="11" />
+      <module name="temperature-sensor-advanced" target="11" />
+      <module name="weather-api" target="11" />
+      <module name="weather-features" target="11" />
+      <module name="weather-model" target="11" />
+      <module name="weather-osgi" target="11" />
+      <module name="weather-station" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

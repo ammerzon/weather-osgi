@@ -1,0 +1,10 @@
+{
+  "name": "weather-ui",
+  "version": "1.0.0",
+  "main": "station.js",
+  "devDependencies": {
+    "@types/jquery": "^3.4.1",
+    "@types/plotly.js": "^1.52.3"
+  },
+  "dependencies": {}
+}
