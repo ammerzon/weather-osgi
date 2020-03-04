@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/rainfall-sensor/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/rainfall-sensor/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/solar-sensor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/solar-sensor/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/temperature-sensor-advanced/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/temperature-sensor-advanced/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/temperature-sensor/src/main/java" charset="UTF-8" />

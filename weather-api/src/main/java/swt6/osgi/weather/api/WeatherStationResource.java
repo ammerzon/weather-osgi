@@ -56,4 +56,18 @@ public class WeatherStationResource {
         }
         return Response.ok(cumulated ? station.getCumulatedRainfall() : station.getCurrentRainfall()).build();
     }
+
+    @Path("/solar")
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public Response getSolarRadiation() {
+        var station = this.station;
+        if (station == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Weather station unavailable").build();
+        }
+        if (!station.hasSolarSensors()) {
+            return Response.status(Response.Status.NOT_FOUND).entity("No solar sensor available").build();
+        }
+        return Response.ok(station.getCurrentSolarRadiation()).build();
+    }
 }

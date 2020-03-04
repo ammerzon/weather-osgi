@@ -12,4 +12,8 @@ public interface WeatherStation {
     Measurement getCurrentRainfall();
 
     Measurement getCumulatedRainfall();
+
+    boolean hasSolarSensors();
+
+    Measurement getCurrentSolarRadiation();
 }

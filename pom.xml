@@ -37,6 +37,7 @@
         <module>temperature-sensor-advanced</module>
         <module>weather-features</module>
         <module>rainfall-sensor</module>
+        <module>solar-sensor</module>
     </modules>
 
     <build>

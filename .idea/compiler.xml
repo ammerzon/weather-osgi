@@ -9,6 +9,7 @@
         <module name="weather-api" />
         <module name="temperature-sensor" />
         <module name="weather-model" />
+        <module name="solar-sensor" />
         <module name="temperature-sensor-advanced" />
         <module name="weather-station" />
         <module name="rainfall-sensor" />
@@ -16,6 +17,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="rainfall-sensor" target="11" />
+      <module name="solar-sensor" target="11" />
       <module name="temperature-sensor" target="11" />
       <module name="temperature-sensor-advanced" target="11" />
       <module name="weather-api" target="11" />

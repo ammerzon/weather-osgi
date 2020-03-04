@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/rainfall-sensor/rainfall-sensor.iml" filepath="$PROJECT_DIR$/rainfall-sensor/rainfall-sensor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/solar-sensor/solar-sensor.iml" filepath="$PROJECT_DIR$/solar-sensor/solar-sensor.iml" />
       <module fileurl="file://$PROJECT_DIR$/temperature-sensor/temperature-sensor.iml" filepath="$PROJECT_DIR$/temperature-sensor/temperature-sensor.iml" />
       <module fileurl="file://$PROJECT_DIR$/temperature-sensor-advanced/temperature-sensor-advanced.iml" filepath="$PROJECT_DIR$/temperature-sensor-advanced/temperature-sensor-advanced.iml" />
       <module fileurl="file://$PROJECT_DIR$/weather-api/weather-api.iml" filepath="$PROJECT_DIR$/weather-api/weather-api.iml" />

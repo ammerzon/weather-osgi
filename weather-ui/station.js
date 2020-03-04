@@ -2,6 +2,7 @@ jQuery(() => {
     const BASE_URL = "http://localhost:8181/weather/";
     const TEMPERATURE_URL = BASE_URL + "temperature";
     const RAINFALL_URL = BASE_URL + "rainfall";
+    const SOLAR_RADIATION_URL = BASE_URL + "solar";
     const CUMULATED_RAINFALL_URL = RAINFALL_URL + "?cumulated=true";
     const UPDATE_INTERVAL = 1000; // ms
     const MAX_POINTS = 200;
@@ -10,12 +11,15 @@ jQuery(() => {
         TEMPERATURE: 'temperature',
         RAINFALL: 'rainfall',
         CUMULATED_RAINFALL: 'cumulated-rainfall',
+        SOLAR_RADIATION: 'solar'
     };
 
     function getIdPrefix(sensorType) {
         switch (sensorType) {
             case sensorTypes.TEMPERATURE:
                 return 'temperature';
+            case sensorTypes.SOLAR_RADIATION:
+                return 'solar';
             case sensorTypes.RAINFALL:
             case sensorTypes.CUMULATED_RAINFALL:
                 return 'rainfall';
@@ -67,6 +71,9 @@ jQuery(() => {
             case sensorTypes.CUMULATED_RAINFALL:
                 url = CUMULATED_RAINFALL_URL;
                 break;
+            case sensorTypes.SOLAR_RADIATION:
+                url = SOLAR_RADIATION_URL;
+                break;
         }
 
         return fetch(url)
@@ -93,8 +100,9 @@ jQuery(() => {
         const temperature = createFetch(sensorTypes.TEMPERATURE);
         const rainfall = createFetch(sensorTypes.RAINFALL);
         const cumulatedRainfall = createFetch(sensorTypes.CUMULATED_RAINFALL);
+        const solarRadiation = createFetch(sensorTypes.SOLAR_RADIATION);
 
-        await Promise.all([temperature, rainfall, cumulatedRainfall]);
+        await Promise.all([temperature, rainfall, cumulatedRainfall, solarRadiation]);
         if (++count !== 200) {
             setTimeout(fetchData, UPDATE_INTERVAL);
         }
@@ -102,6 +110,7 @@ jQuery(() => {
 
     initTraces(sensorTypes.TEMPERATURE);
     initTraces(sensorTypes.RAINFALL);
+    initTraces(sensorTypes.SOLAR_RADIATION);
     let count = 0;
     setTimeout(fetchData, UPDATE_INTERVAL);
 });
