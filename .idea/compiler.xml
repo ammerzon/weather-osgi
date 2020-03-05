@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="solar-sensor3" />
         <module name="weather-api" />
         <module name="temperature-sensor" />
         <module name="weather-model" />
         <module name="solar-sensor" />
         <module name="temperature-sensor-advanced" />
+        <module name="solar-sensor2" />
         <module name="weather-station" />
         <module name="rainfall-sensor" />
       </profile>
@@ -18,6 +20,8 @@
     <bytecodeTargetLevel>
       <module name="rainfall-sensor" target="11" />
       <module name="solar-sensor" target="11" />
+      <module name="solar-sensor2" target="11" />
+      <module name="solar-sensor3" target="11" />
       <module name="temperature-sensor" target="11" />
       <module name="temperature-sensor-advanced" target="11" />
       <module name="weather-api" target="11" />

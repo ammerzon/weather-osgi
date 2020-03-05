@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>solar-sensor</artifactId>
+    <artifactId>solar-sensor2</artifactId>
     <packaging>jar</packaging>
 
     <build>
@@ -32,4 +32,5 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
+
 </project>

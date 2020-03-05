@@ -9,6 +9,11 @@
     feature:install weather-bundles
 
     update weather-model; update weather-station; update weather-api
+
+    feature:install webconsole
+    http://localhost:8181/system/console
+    karaf/karaf
+
     -->
 
     <groupId>swt6.osgi</groupId>
@@ -38,6 +43,8 @@
         <module>weather-features</module>
         <module>rainfall-sensor</module>
         <module>solar-sensor</module>
+        <module>solar-sensor2</module>
+        <module>solar-sensor3</module>
     </modules>
 
     <build>

@@ -34,6 +34,8 @@
         <bundle>mvn:swt6.osgi/temperature-sensor/${project.version}</bundle>
         <bundle>mvn:swt6.osgi/rainfall-sensor/${project.version}</bundle>
         <bundle>mvn:swt6.osgi/solar-sensor/${project.version}</bundle>
+        <bundle>mvn:swt6.osgi/solar-sensor2/${project.version}</bundle>
+        <bundle>mvn:swt6.osgi/solar-sensor3/${project.version}</bundle>
     </feature>
 
 </features>

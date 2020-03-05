@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/rainfall-sensor/rainfall-sensor.iml" filepath="$PROJECT_DIR$/rainfall-sensor/rainfall-sensor.iml" />
       <module fileurl="file://$PROJECT_DIR$/solar-sensor/solar-sensor.iml" filepath="$PROJECT_DIR$/solar-sensor/solar-sensor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/solar-sensor2/solar-sensor2.iml" filepath="$PROJECT_DIR$/solar-sensor2/solar-sensor2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/solar-sensor3/solar-sensor3.iml" filepath="$PROJECT_DIR$/solar-sensor3/solar-sensor3.iml" />
       <module fileurl="file://$PROJECT_DIR$/temperature-sensor/temperature-sensor.iml" filepath="$PROJECT_DIR$/temperature-sensor/temperature-sensor.iml" />
       <module fileurl="file://$PROJECT_DIR$/temperature-sensor-advanced/temperature-sensor-advanced.iml" filepath="$PROJECT_DIR$/temperature-sensor-advanced/temperature-sensor-advanced.iml" />
       <module fileurl="file://$PROJECT_DIR$/weather-api/weather-api.iml" filepath="$PROJECT_DIR$/weather-api/weather-api.iml" />

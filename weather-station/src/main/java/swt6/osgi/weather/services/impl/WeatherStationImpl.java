@@ -6,6 +6,7 @@ import swt6.osgi.weather.model.Sensor;
 import swt6.osgi.weather.services.WeatherStation;
 
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -13,7 +14,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class WeatherStationImpl implements WeatherStation {
 
     private static final long CUMULATED_RAINFALL_INTERVAL = 1; // hours
-
+    private final List<Measurement> solarRadiationMeasurements = new CopyOnWriteArrayList<>();
     private volatile Sensor temperatureSensor;
     private volatile Sensor rainfallSensor;
     private volatile List<Sensor> solarSensors = new CopyOnWriteArrayList<>();
@@ -21,7 +22,6 @@ public class WeatherStationImpl implements WeatherStation {
     private volatile Measurement currentCumulatedRainfall;
     private volatile Measurement currentRainfall;
     private volatile Measurement currentTemperature;
-    private volatile List<Measurement> solarRadiationMeasurements = new CopyOnWriteArrayList<>();
     private volatile Measurement currentSolarRadiation;
 
     //region Temperature sensor
@@ -132,16 +132,20 @@ public class WeatherStationImpl implements WeatherStation {
     }
 
     public void unsetSolarSensor(Sensor solarSensor) {
-        var sensor = solarSensors.get(solarSensors.indexOf(solarSensor));
-        sensor.removeSensorListener(this::processSolarRadiationMeasurement);
+        solarSensor.removeSensorListener(this::processSolarRadiationMeasurement);
         solarSensors.remove(solarSensor);
-        System.out.printf("Remove %s [%d]%n", solarSensor.getClass(), solarSensors.size());
+        System.out.printf("Unset %s [%d]%n", solarSensor.getClass(), solarSensors.size());
     }
 
     private void processSolarRadiationMeasurement(Measurement measurement) {
-        if (solarRadiationMeasurements.size() > 0 && solarRadiationMeasurements.get(0).getTimeStamp().isBefore(measurement.getTimeStamp())) {
-            var avgSolarRadiation = solarRadiationMeasurements.stream().mapToDouble(Measurement::getValue).average().orElse(0);
-            currentSolarRadiation = solarRadiationMeasurements.get(0);
+        List<Measurement> measurementCopy;
+        synchronized (solarRadiationMeasurements) {
+            measurementCopy = new ArrayList<>(solarRadiationMeasurements);
+        }
+
+        if (measurementCopy.size() > 0 && measurementCopy.get(0).getTimeStamp().isBefore(measurement.getTimeStamp())) {
+            var avgSolarRadiation = measurementCopy.stream().mapToDouble(Measurement::getValue).average().orElse(0);
+            currentSolarRadiation = measurementCopy.get(0);
             currentSolarRadiation.setValue(avgSolarRadiation);
             solarRadiationMeasurements.clear();
             return;
