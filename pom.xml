@@ -13,7 +13,6 @@
     feature:install webconsole
     http://localhost:8181/system/console
     karaf/karaf
-
     -->
 
     <groupId>swt6.osgi</groupId>

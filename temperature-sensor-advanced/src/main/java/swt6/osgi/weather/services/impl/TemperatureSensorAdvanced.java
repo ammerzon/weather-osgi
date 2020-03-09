@@ -27,7 +27,7 @@ public class TemperatureSensorAdvanced implements Sensor {
     private final List<SensorListener> listeners = new CopyOnWriteArrayList<>();
 
     private double currentValue = 0;
-    private LocalDateTime currentTime = LocalDateTime.of(2020, 1, 1, 0, 0);
+    private LocalDateTime currentTime = LocalDateTime.now();
     private boolean isInitialized = false;
     private Timer timer = new Timer();
 
@@ -53,6 +53,7 @@ public class TemperatureSensorAdvanced implements Sensor {
 
     @Activate
     private void activate() {
+        currentTime = LocalDateTime.now();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -64,6 +65,7 @@ public class TemperatureSensorAdvanced implements Sensor {
 
     @Deactivate
     private void deactivate() {
+        currentTime = LocalDateTime.of(2020, 1, 1, 0, 0);
         timer.cancel();
     }
 

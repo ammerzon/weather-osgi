@@ -90,6 +90,8 @@ jQuery(() => {
                 }
                 extend_traces(measurement.timeStamp, measurement.value, sensorType);
             }).catch(function (response) {
+                if (response.url === CUMULATED_RAINFALL_URL) return;
+
                 response.text().then(responseMessage => {
                     handleError(response.status, response.statusText, responseMessage, sensorType);
                 })

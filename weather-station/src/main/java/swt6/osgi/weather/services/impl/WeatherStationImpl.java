@@ -3,6 +3,7 @@ package swt6.osgi.weather.services.impl;
 import org.osgi.service.component.annotations.*;
 import swt6.osgi.weather.model.Measurement;
 import swt6.osgi.weather.model.Sensor;
+import swt6.osgi.weather.model.SensorListener;
 import swt6.osgi.weather.services.WeatherStation;
 
 import java.time.temporal.ChronoUnit;
@@ -23,6 +24,9 @@ public class WeatherStationImpl implements WeatherStation {
     private volatile Measurement currentRainfall;
     private volatile Measurement currentTemperature;
     private volatile Measurement currentSolarRadiation;
+    private volatile SensorListener temperatureSensorListener = WeatherStationImpl.this::processTemperatureMeasurement;
+    private volatile SensorListener rainfallSensorListener = WeatherStationImpl.this::processRainfallMeasurement;
+    private volatile SensorListener solarRadiationSensorListener = WeatherStationImpl.this::processSolarRadiationMeasurement;
 
     //region Temperature sensor
     @Reference(
@@ -33,12 +37,12 @@ public class WeatherStationImpl implements WeatherStation {
     )
     public void setTemperatureSensor(Sensor temperatureSensor) {
         this.temperatureSensor = temperatureSensor;
-        this.temperatureSensor.addSensorListener(this::processTemperatureMeasurement);
+        this.temperatureSensor.addSensorListener(temperatureSensorListener);
         System.out.println("Set " + temperatureSensor.getClass());
     }
 
     public void unsetTemperatureSensor(Sensor temperatureSensor) {
-        this.temperatureSensor.removeSensorListener(this::processTemperatureMeasurement);
+        this.temperatureSensor.removeSensorListener(temperatureSensorListener);
         if (this.temperatureSensor == temperatureSensor) {
             this.temperatureSensor = null;
         }
@@ -72,12 +76,12 @@ public class WeatherStationImpl implements WeatherStation {
     )
     public void setRainfallSensor(Sensor rainfallSensor) {
         this.rainfallSensor = rainfallSensor;
-        this.rainfallSensor.addSensorListener(this::processRainfallMeasurement);
+        this.rainfallSensor.addSensorListener(rainfallSensorListener);
         System.out.println("Set " + rainfallSensor.getClass());
     }
 
     public void unsetRainfallSensor(Sensor rainfallSensor) {
-        this.rainfallSensor.removeSensorListener(this::processRainfallMeasurement);
+        this.rainfallSensor.removeSensorListener(rainfallSensorListener);
         if (this.rainfallSensor == rainfallSensor) {
             this.rainfallSensor = null;
         }
@@ -90,7 +94,7 @@ public class WeatherStationImpl implements WeatherStation {
             currentCumulatedRainfall = new Measurement(measurement.getValue(), measurement.getUnit());
         } else {
             currentCumulatedRainfall.setValue(currentCumulatedRainfall.getValue() + measurement.getValue());
-            if (ChronoUnit.HOURS.between(measurement.getTimeStamp(), currentCumulatedRainfall.getTimeStamp()) > CUMULATED_RAINFALL_INTERVAL) {
+            if (Math.abs(ChronoUnit.HOURS.between(measurement.getTimeStamp(), currentCumulatedRainfall.getTimeStamp())) > CUMULATED_RAINFALL_INTERVAL) {
                 currentCumulatedRainfall.setTimeStamp(measurement.getTimeStamp());
                 cumulatedRainfall = currentCumulatedRainfall;
                 currentCumulatedRainfall = null;
@@ -127,12 +131,12 @@ public class WeatherStationImpl implements WeatherStation {
     )
     public void setSolarSensor(Sensor solarSensor) {
         solarSensors.add(solarSensor);
-        solarSensor.addSensorListener(this::processSolarRadiationMeasurement);
+        solarSensor.addSensorListener(solarRadiationSensorListener);
         System.out.printf("Add %s [%d]%n", solarSensor.getClass(), solarSensors.size());
     }
 
     public void unsetSolarSensor(Sensor solarSensor) {
-        solarSensor.removeSensorListener(this::processSolarRadiationMeasurement);
+        solarSensor.removeSensorListener(solarRadiationSensorListener);
         solarSensors.remove(solarSensor);
         System.out.printf("Unset %s [%d]%n", solarSensor.getClass(), solarSensors.size());
     }

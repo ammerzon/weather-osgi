@@ -36,6 +36,8 @@ public class SolarSensor2 implements Sensor {
 
     @Activate
     private void activate(SolarSensor2Config config) {
+        modified(config);
+        currentTime = LocalDateTime.now();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -57,6 +59,7 @@ public class SolarSensor2 implements Sensor {
 
     @Deactivate
     private void deactivate() {
+        currentTime = LocalDateTime.of(2020, 1, 1, 0, 0);;
         timer.cancel();
     }
 

@@ -22,7 +22,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class RainfallSensor implements Sensor {
     private final List<SensorListener> listeners = new CopyOnWriteArrayList<>();
     private int interval = 500; // milliseconds
-    private long updateRate = 900; // seconds
+    private long updateRate = 450; // seconds
     private double maxRainfallMinute = 2.4;
     private double maxRainfall = maxRainfallMinute * (updateRate / 60.0);
     private LocalDateTime currentTime = LocalDateTime.of(2020, 1, 1, 0, 0);
@@ -58,6 +58,7 @@ public class RainfallSensor implements Sensor {
 
     @Deactivate
     private void deactivate() {
+        currentTime = LocalDateTime.of(2020, 1, 1, 0, 0);;
         timer.cancel();
     }
 

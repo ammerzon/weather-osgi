@@ -40,6 +40,9 @@ public class WeatherStationResource {
         if (!station.hasTemperatureSensor()) {
             return Response.status(Response.Status.NOT_FOUND).entity("No temperature sensor available").build();
         }
+        if (station.getCurrentTemperature() == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("No temperature sensor data available").build();
+        }
         return Response.ok(station.getCurrentTemperature()).build();
     }
 
@@ -54,6 +57,9 @@ public class WeatherStationResource {
         if (!station.hasRainfallSensor()) {
             return Response.status(Response.Status.NOT_FOUND).entity("No rainfall sensor available").build();
         }
+        if (station.getCurrentRainfall() == null && !cumulated || station.getCumulatedRainfall() == null && cumulated) {
+            return Response.status(Response.Status.NOT_FOUND).entity("No rainfall sensor data available").build();
+        }
         return Response.ok(cumulated ? station.getCumulatedRainfall() : station.getCurrentRainfall()).build();
     }
 
@@ -67,6 +73,9 @@ public class WeatherStationResource {
         }
         if (!station.hasSolarSensors()) {
             return Response.status(Response.Status.NOT_FOUND).entity("No solar sensor available").build();
+        }
+        if (station.getCurrentSolarRadiation() == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("No solar sensor data available").build();
         }
         return Response.ok(station.getCurrentSolarRadiation()).build();
     }

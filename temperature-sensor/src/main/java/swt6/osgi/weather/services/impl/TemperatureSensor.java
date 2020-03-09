@@ -54,6 +54,7 @@ public class TemperatureSensor implements Sensor {
 
     @Activate
     private void activate(TemperatureSensorConfig config) {
+        currentTime = LocalDateTime.now();
         modified(config);
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -77,6 +78,7 @@ public class TemperatureSensor implements Sensor {
 
     @Deactivate
     private void deactivate() {
+        currentTime = LocalDateTime.of(2020, 1, 1, 0, 0);;
         timer.cancel();
     }
 
