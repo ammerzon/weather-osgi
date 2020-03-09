@@ -1,5 +1,9 @@
 # Weather OSGi
 
+## Parameter Konfiguration
+* Go to [http://localhost:8181/system/console](http://localhost:8181/system/console)
+* Use karaf/karaf to log in
+
 ## Funktionale Anforderungen
 
 Erweitern Sie das Beispiel aus der Übung (osgi-weather) um folgende Aspekte:
